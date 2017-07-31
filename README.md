@@ -11,6 +11,10 @@ In that case, you can replace this line from your wp-config.php file:
 
 ```php
 define('WP_DEBUG', false);
+
+// OR
+
+@ini_set('display_errors', 0);
 ```
 with this:
 
@@ -39,3 +43,16 @@ First you need to edit the `wp-config.php` file on your WordPress site and add t
 define( 'WP_MEMORY_LIMIT', '256M' );
 ```
 Setup memory limit as you need.
+
+### FORCE REDIRECT HTTP MEDIA FILE INTO HTTPS
+```php
+function have_https_for_media( $url ) {
+
+    if ( is_ssl() )
+        $url = str_replace( 'http://', 'https://', $url );
+    return $url;
+
+}
+add_filter( 'wp_get_attachment_url', 'have_https_for_media' );
+```
+Add those code into Parent/Child Theme's function.php file
