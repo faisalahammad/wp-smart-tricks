@@ -48,6 +48,14 @@ Setup memory limit as you need.
 
 ---
 
+### Force HTTP to HTTPS
+```
+RewriteCond %{HTTPS} !on           
+RewriteRule ^(.*) https://%{SERVER_NAME}/$1 [R,L]
+```
+
+---
+
 ### FORCE REDIRECT HTTP MEDIA FILE INTO HTTPS
 ```php
 function have_https_for_media( $url ) {
@@ -66,12 +74,4 @@ Add those code into Parent/Child Theme's function.php file
 ### PHPMYADMIN login page
 ```
 http://www.yourdomainname.com:2083/3rdparty/phpMyAdmin/index.php
-```
-
----
-
-### Force HTTP to HTTPS
-```
-RewriteCond %{HTTPS} !on           
-RewriteRule ^(.*) https://%{SERVER_NAME}/$1 [R,L]
 ```
