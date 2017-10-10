@@ -28,17 +28,6 @@ I hope that helps someone out there!
 
 ---
 
-### FORCE REWRITE HTTP TO HTTPS
-Add those 3 lines of code in `<IfModule mod_rewrite.c>` and save changes.
-```
-RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteRule .* https://domain.com/%{REQUEST_URI} [R,L]
-```
-Replace **https://domain.com/** with your domain name.
-
----
-
 ### INCREASE PHP MEMORY LIMIT IN WORDPRESS
 First you need to edit the `wp-config.php` file on your WordPress site and add those code then **SAVE CHANGES**.
 ```php
@@ -49,6 +38,7 @@ Setup memory limit as you need.
 ---
 
 ### Force HTTP to HTTPS
+Add those 2 lines of code in `<IfModule mod_rewrite.c>` and save changes.
 ```
 RewriteCond %{HTTPS} !on           
 RewriteRule ^(.*) https://%{SERVER_NAME}/$1 [R,L]
