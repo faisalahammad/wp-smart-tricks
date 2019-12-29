@@ -61,6 +61,38 @@ Add those code into Parent/Child Theme's function.php file
 
 ---
 
+### Add web fonts to your theme and the Beaver Builder plugin
+```php
+function my_bb_custom_fonts ( $system_fonts ) {
+
+  $system_fonts[ 'Forza Book' ] = array(
+    'fallback' => 'Verdana, Arial, sans-serif',
+    'weights' => array(
+        '400',
+    ),
+  );
+  
+	$system_fonts[ 'Neutra Text Demi' ] = array(
+		"fallback" => "Geogia, serif",
+		"weights"  => array(
+			"500",
+			"600",
+			"900",
+		)
+	);
+
+  return $system_fonts;
+}
+
+//Add to Beaver Builder Theme Customizer
+add_filter( 'fl_theme_system_fonts', 'my_bb_custom_fonts' );
+
+//Add to Page Builder modules
+add_filter( 'fl_builder_font_families_system', 'my_bb_custom_fonts' );
+```
+
+---
+
 ### PHPMYADMIN login page
 ```
 http://www.yourdomainname.com:2083/3rdparty/phpMyAdmin/index.php
